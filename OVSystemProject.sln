@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.5.33516.290
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OVSystemProject", "OVSystemProject\OVSystemProject.csproj", "{01DD2623-4E3E-439F-94D5-0A6BB6D19733}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{01DD2623-4E3E-439F-94D5-0A6BB6D19733}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{01DD2623-4E3E-439F-94D5-0A6BB6D19733}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{01DD2623-4E3E-439F-94D5-0A6BB6D19733}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{01DD2623-4E3E-439F-94D5-0A6BB6D19733}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {6C977D0C-B258-4367-9633-78DED6CE1B22}
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,215 @@
+﻿@model RegisterViewModel
+
+@{
+    ViewData["Title"] = "Voter Register";
+}
+
+<h1>@ViewData["Title"]</h1>
+
+<div class="row">
+    <div class="col-md-12">
+        <form method="post" enctype="multipart/form-data">
+            <h2>Create a new account.</h2>
+            <hr />
+            <div asp-validation-summary="ModelOnly" class="text-danger" role="alert"></div>
+            @*<div class="form-floating mb-3">
+            <input asp-for="Input.Role" hidden value="Admin" />
+            <span asp-validation-for="Input.Role" class="text-danger"></span>
+            </div>*@
+            <div class="row g-4">
+                <div class="mb-3 col-lg-3">
+                    <label class="form-label" asp-for="FirstName"></label>
+                    <input type="text" class="form-control" asp-for="FirstName" />
+                    <span asp-validation-for="FirstName" class="text-danger"></span>
+                </div>
+                <div class="mb-3 col-lg-3">
+                    <label class="form-label" asp-for="MiddleName"></label>
+                    <input type="text" class="form-control" asp-for="MiddleName" />
+@*                    <span asp-validation-for="MiddleName" class="text-danger"></span>*@
+                </div>
+                <div class="mb-3 col-lg-3">
+                    <label class="form-label" asp-for="LastName"></label>
+                    <input type="text" class="form-control" asp-for="LastName" />
+                    <span asp-validation-for="LastName" class="text-danger"></span>
+                </div>
+                <div class="mb-3 col-lg-3">
+                    <label class="form-label" asp-for="NameExtension"></label>
+                    <select class="form-control" asp-for="NameExtension">
+                        <option value=""></option>
+                        <option value="Jr">Jr</option>
+                        <option value="Sr">Sr</option>
+                        <option value="III">III</option>
+                    </select>
+@*                    <span asp-validation-for="NameExtension" class="text-danger"></span>*@
+                </div>
+            </div>
+
+            <div class="row g-4">
+                <div class="mb-3 col-lg-3">
+                    <label class="form-label" asp-for="PhoneNumber"></label>
+                    <input type="text" class="form-control" asp-for="PhoneNumber"  />
+                    <span asp-validation-for="PhoneNumber" class="text-danger"></span>
+                </div>
+                <div class="mb-3 col-lg-3">
+                    <label class="form-label" asp-for="Email"></label>
+                    <input type="text" class="form-control" asp-for="Email" />
+                    <span asp-validation-for="Email" class="text-danger"></span>
+                </div>
+                <div class="mb-3 col-lg-3">
+                    <label class="form-label" asp-for="Password"></label>
+                    <input class="form-control" asp-for="Password" />
+                    <span asp-validation-for="Password" class="text-danger"></span>
+                </div>
+                <div class="mb-3 col-lg-3">
+                    <label class="form-label" asp-for="ConfirmPassword"></label>
+                    <input class="form-control" asp-for="ConfirmPassword" />
+                    <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
+                </div>
+            </div>
+
+            <div class="row g-4">
+                <div class="mb-3 col-sm-3">
+                    <label class="form-label" asp-for="DateOfBirth"></label>
+                    <input type="date" class="form-control" asp-for="DateOfBirth" value="" />
+                    <span asp-validation-for="DateOfBirth" class="text-danger"></span>
+                </div>
+                <div class="mb-3 col-sm-3">
+                    <label class="form-label" asp-for="Age"></label>
+                    <input type="number" class="form-control" asp-for="Age" value="" />
+                    <span asp-validation-for="Age" class="text-danger"></span>
+                </div>
+                <div class="mb-3 col-sm-3">
+                    <label class="form-label" asp-for="Sex"></label>
+                    <select class="form-control" asp-for="Sex">
+                        <option value=""></option>
+                        <option value="F">Female</option>
+                        <option value="M">Male</option>
+                    </select>
+                    <span asp-validation-for="Sex" class="text-danger"></span>
+                </div>
+                <div class="mb-3 col-lg-3">
+                    <label class="form-label" asp-for="Photo"></label>
+                    <input type="file" class="form-control" asp-for="Photo" />
+                    <span asp-validation-for="Photo" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="my-2">
+                <label class="form-label fw-bold">PLACE OF BIRTH</label>
+            </div>
+            <div class="row g-2">
+                <div class="mb-3 col-lg-6">
+                    <label class="form-label" asp-for="PBMunicipality"></label>
+                    <input type="text" class="form-control" asp-for="PBMunicipality" />
+                    <span asp-validation-for="PBMunicipality" class="text-danger"></span>
+                </div>
+                <div class="mb-3 col-lg-6">
+                    <label class="form-label" asp-for="PBProvince"></label>
+                    <input type="text" class="form-control" asp-for="PBProvince" />
+                    <span asp-validation-for="PBProvince" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="row g-3">
+                <div class="mb-3 col-lg-4">
+                    <label class="form-label" asp-for="CivilStatus"></label>
+                    <select class="form-control" asp-for="CivilStatus">
+                        <option value=""></option>
+                        <option value="Single">Single</option>
+                        <option value="Married">Married</option>
+                        <option value="Widowed">Windowed</option>
+                        <option value="Separated">Separated</option>
+                        <option value="Others">Others</option>
+                    </select>
+                    <span asp-validation-for="CivilStatus" class="text-danger"></span>
+                </div>
+
+                <div class="mb-3 col-lg-4">
+                    <label class="form-label" asp-for="Citizenship"></label>
+                    <select class="form-control" asp-for="Citizenship">
+                        <option value=""></option>
+                        <option value="Filipino">Filipino</option>
+                        <option value="Dual Citizenship">Dual Citizenship</option>
+                        <option value="Others">Others</option>
+                    </select>
+                    <span asp-validation-for="Citizenship" class=" text-danger"></span>
+                </div>
+
+                <div class="mb-3 col-lg-3">
+                    <label class="form-label" asp-for="Occupation"></label>
+                    <input type="text" class="form-control" asp-for="Occupation" />
+                    <span asp-validation-for="Occupation" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="my-2">
+                <label class="form-label fw-bold">ADDRESS</label>
+            </div>
+            <div class="row g-4">
+                <div class="mb-3 col-lg-3">
+                    <label class="form-label" asp-for="AddHouseNoStreet"></label>
+                    <input type="text" class="form-control" asp-for="AddHouseNoStreet" />
+                    <span asp-validation-for="AddHouseNoStreet" class="text-danger"></span>
+                </div>
+                <div class="mb-3 col-lg-3">
+                    <label class="form-label" asp-for="AddBarangay"></label>
+                    <input type="text" class="form-control" asp-for="AddBarangay" />
+                    <span asp-validation-for="AddBarangay" class="text-danger"></span>
+                </div>
+                <div class="mb-3 col-lg-3">
+                    <label class="form-label" asp-for="AddMunicipality"></label>
+                    <input type="text" class="form-control" asp-for="AddMunicipality" />
+                    <span asp-validation-for="AddMunicipality" class="text-danger"></span>
+                </div>
+                <div class="mb-3 col-lg-3">
+                    <label class="form-label" asp-for="AddProvince"></label>
+                    <input type="text" class="form-control" asp-for="AddProvince" />
+                    <span asp-validation-for="AddProvince" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="text-center">
+                <button type="submit" class="btn btn-primary">Register</button>
+            </div>
+        </form>
+    </div>
+    @*<div class="col-md-6 col-md-offset-2">
+    <section>
+    <h3>Use another service to register.</h3>
+    <hr />
+    @{
+    if ((Model.ExternalLogins?.Count ?? 0) == 0)
+    {
+    <div>
+    <p>
+    There are no external authentication services configured. See this <a href="https://go.microsoft.com/fwlink/?LinkID=532715">article
+    about setting up this ASP.NET application to support logging in via external services</a>.
+    </p>
+    </div>
+    }
+    else
+    {
+    <form id="external-account" asp-page="./ExternalLogin" asp-route-returnUrl="@Model.ReturnUrl" method="post" class="form-horizontal">
+    <div>
+    <p>
+    @foreach (var provider in Model.ExternalLogins!)
+    {
+    <button type="submit" class="btn btn-primary" name="provider" value="@provider.Name" title="Log in using your @provider.DisplayName account">@provider.DisplayName</button>
+    }
+    </p>
+    </div>
+    </form>
+    }
+    }
+    </section>
+    </div>*@
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+
+    <script>
+        $(document).ready(function () {
+            $('.custom-file-input').on("change", function () {
+                var fileName = $(this).val().split("\\").pop();
+                $(this).next('.custom-file-label').html(fileName);
+            });
+        });
+    </script>
+}
