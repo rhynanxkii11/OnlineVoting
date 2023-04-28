@@ -8,6 +8,7 @@ using OVSystemProject.ViewModels;
 
 namespace OVSystemProject.Controllers
 {
+    [Authorize]
     public class VoteController : Controller
     {
         private readonly OnlineVotingDbContext _context;

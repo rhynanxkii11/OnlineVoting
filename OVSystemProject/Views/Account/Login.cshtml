@@ -5,12 +5,12 @@
 }
 
 <div class="container">
-    <div id="reponsive-login" class="d-flex justify-content-center align-content-center gap-4" style="padding: 10%; padding-top: 5%;">
+    <div class="responsive-login d-flex justify-content-center align-content-center gap-4" style="padding: 10%; padding-top: 7%; height: 100vh; align-items: center;">
         <div class="loginImage">
             <img src="~/img/votingImage.svg" style="width: 500px;"/>
         </div>
         <div class="loginForm pt-5">
-            <form method="post" class="bg-light p-5" style="width: 400px; border-radius: 20px; box-shadow: 0px 4px 8px rgba(0,0,0,0.3);">
+            <form method="post" class="bg-light p-5 loginFormResponsive" style="width: 400px; border-radius: 20px; box-shadow: 0px 4px 8px rgba(0,0,0,0.3);">
                 <div class="text-center py-3 fw-bold ">
                     <h1 class="login">Login</h1>
                 </div>
@@ -48,7 +48,6 @@
         </div>
     </div>
 </div>
-
 @section Scripts {
     <partial name="_ValidationScriptsPartial" />
 

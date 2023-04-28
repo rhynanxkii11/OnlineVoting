@@ -172,12 +172,12 @@ namespace OVSystemProject.Controllers
 
                 if(viewModel.Photo != null)
                 {
-                    if (string.IsNullOrWhiteSpace(candidate.Photo))
+                    if (!string.IsNullOrWhiteSpace(candidate.Photo))
                     {
-                        var photoFilePath = Path.Combine(_webHostEnvironment.WebRootPath, "img/candidate", candidate.Photo);
-                        if (System.IO.File.Exists(photoFilePath))
+                        var photoPath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/img/candidate", candidate.Photo);
+                        if (System.IO.File.Exists(photoPath))
                         {
-                            System.IO.File.Delete(photoFilePath);
+                            System.IO.File.Delete(photoPath);
                         }
                     }
                     var fileName = Guid.NewGuid().ToString() + Path.GetExtension(viewModel.Photo.FileName);
@@ -269,11 +269,12 @@ namespace OVSystemProject.Controllers
                 TempData["errorMessage"] = "Candidate is not found!";
                 return View();
             }
-            string temp = candidate.Photo;
 
-            string uploadsFolder = Path.Combine(_webHostEnvironment.WebRootPath, "img/candidate", temp);
-
-            System.IO.File.Delete(uploadsFolder);
+            var photoPath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/img/candidate", candidate.Photo);
+            if (System.IO.File.Exists(photoPath))
+            {
+                System.IO.File.Delete(photoPath);
+            }
 
             _context.Candidates.Remove(candidate);
             await _context.SaveChangesAsync();

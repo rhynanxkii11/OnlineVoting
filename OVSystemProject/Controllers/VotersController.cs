@@ -118,14 +118,13 @@ namespace OVSystemProject.Controllers
                         {
                             _context.Addresses.Remove(address);
                         }
-                        string temp = user.Photo;
+                        var photoPath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/img/user", user.Photo);
+                        if(System.IO.File.Exists(photoPath))
+                        {
+                            System.IO.File.Delete(photoPath);
+                        }
 
                         _context.Voters.Remove(voter);
-
-                        if (temp != null)
-                        {
-                            DeletePhoto(temp, "user");
-                        }
                     }
                     await _context.SaveChangesAsync();
                     TempData["successMessage"] = "Voter has been deleted successfully!";

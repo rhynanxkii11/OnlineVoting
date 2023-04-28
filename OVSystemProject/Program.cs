@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using OVSystemProject.Data;
@@ -12,6 +13,10 @@ builder.Services.AddDbContext<OnlineVotingDbContext>(options => options.UseSqlSe
 builder.Services.AddDefaultIdentity<ApplicationUsers>()
     .AddRoles<IdentityRole>()
     .AddEntityFrameworkStores<OnlineVotingDbContext>();
+
+builder.Services.ConfigureApplicationCookie(p => p.LoginPath = "/Account/Login");
+
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

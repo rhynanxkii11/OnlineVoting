@@ -7,7 +7,7 @@ using System.Data;
 
 namespace OVSystemProject.Controllers
 {
-    [Authorize(Roles = "Admin, Voter")]
+    [Authorize(Roles = "Admin")]
     public class ElectionEventController : Controller
     {
         private readonly OnlineVotingDbContext _context;
@@ -133,6 +133,18 @@ namespace OVSystemProject.Controllers
         [HttpPost]
         public async Task<IActionResult> ResetDataConfirm()
         {
+            var candidates = _context.Candidates.ToList();
+            foreach (var candidate in candidates)
+            {
+                if (!string.IsNullOrWhiteSpace(candidate.Photo))
+                {
+                    var photoPath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/img/candidate", candidate.Photo);
+                    if (System.IO.File.Exists(photoPath))
+                    {
+                        System.IO.File.Delete(photoPath);
+                    }
+                }
+            }
             // Delete the data from tables Position, Candidate, Event, and VoteTransaction
             await _context.Database.ExecuteSqlRawAsync("DELETE FROM Positions");
             await _context.Database.ExecuteSqlRawAsync("DELETE FROM Candidates");
@@ -147,30 +159,6 @@ namespace OVSystemProject.Controllers
 
             TempData["successMessage"] = "Reset successful!";
             return RedirectToAction("Index", "ElectionEvent");
-
-            // Delete all candidate photos
-            DeleteAllPhotos();
-        }
-        public IActionResult DeleteAllPhotos()
-        {
-            try
-            {
-                var fullPath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/img/candidate");
-
-                System.IO.DirectoryInfo di = new(fullPath);
-
-                foreach (FileInfo file in di.GetFiles())
-                {
-                    file.Delete();
-                }
-
-                return Ok("Photos have been deleted successfully.");
-            }
-            catch (Exception ex)
-            {
-                return BadRequest($"Error: {ex.Message}.");
-            }
-
 
         }
     }

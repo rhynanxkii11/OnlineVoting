@@ -58,11 +58,7 @@
                 </div>
                 <div class="mb-3 col-sm-3">
                     <label class="form-label" asp-for="Photo"></label>
-                    <div class="">
-                        <input type="file" class="form-control" asp-for="Photo" id="fileInput" style="display: none; width: 270px;" />
-                        <input type="button" onclick="toggleFileInput()" class="btn btn-secondary" value="Upload New File" style="width: 270px;" />
-                    </div>
-                    
+                    <input type="file" class="form-control" asp-for="Photo" />
                     <span asp-validation-for="Photo" class="text-danger"></span>
                 </div>
             </div>
@@ -129,16 +125,6 @@
                 $(this).next('.custom-file-label').html(fileName);
             });
         });
-
-        function toggleFileInput(){
-            const fileInput = document.getElementById("fileInput");
-            if(fileInput.style.display === "none"){
-                fileInput.style.display = "block";
-            }
-            else{
-                fileInput.style.display = "none";
-            }
-        }
     </script>
 }
 

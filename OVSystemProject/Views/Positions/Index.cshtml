@@ -10,7 +10,7 @@
     </div>
     <hr />
     <div class="mb-3 mt-4">
-        <a asp-controller="Positions" asp-action="Create" class="btn btn-dark mb-4">Create New Role</a>
+        <a asp-controller="Positions" asp-action="Create" class="btn btn-dark mb-4">Create New Position</a>
     </div>
     <div class="table-responsive">
         <table class="table table-striped p-3" id="example">
@@ -38,3 +38,8 @@
         </table>
     </div>
 </div>
+<script>
+    $(document).ready(function () {
+        $('example').DataTable();
+    });
+</script>

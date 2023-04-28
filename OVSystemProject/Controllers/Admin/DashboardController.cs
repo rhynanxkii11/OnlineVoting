@@ -5,7 +5,6 @@ using System.Data;
 namespace OVSystemProject.Controllers.Admin
 {
     [Authorize(Roles = "Admin")]
-    
     public class DashboardController : Controller
     {
         public IActionResult Index()

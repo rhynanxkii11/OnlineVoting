@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.CodeAnalysis.Elfie.Diagnostics;
 using Microsoft.EntityFrameworkCore;
 using OVSystemProject.Data;
@@ -6,6 +7,7 @@ using OVSystemProject.ViewModels;
 
 namespace OVSystemProject.Controllers
 {
+    [Authorize(Roles = "Admin, Voter")]
     public class ResultController : Controller
     {
         private readonly OnlineVotingDbContext _context;

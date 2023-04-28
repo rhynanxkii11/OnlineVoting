@@ -1,9 +1,11 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using OVSystemProject.Data;
 
 namespace OVSystemProject.Controllers
 {
+    [Authorize]
     public class ElectionCandidateController : Controller
     {
         private readonly OnlineVotingDbContext _context;
