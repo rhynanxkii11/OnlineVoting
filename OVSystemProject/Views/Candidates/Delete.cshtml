@@ -1,0 +1,100 @@
+﻿@model CandidatesViewModel
+
+@{
+    ViewData["Title"] = "Delete Candidate";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<div class="row bg-white p-4" style="box-shadow: 0 4px 8px rgba(0,0,0,0.3);">
+    <div class="col-md-12">
+        <form method="post" enctype="multipart/form-data">
+            <h3>@ViewData["Title"]</h3>
+            <hr />
+            <div class="d-flex justify-content-center">
+                <div class="mb-3 col-lg-3">
+                    <img src="~/img/candidate/Photo" style="width: 200px; height: 200px;" />
+                </div>
+            </div>
+            <div class="row g-12">
+                <div class="mb-3 col-lg-3">
+                    <label class="form-label" asp-for="@Model.CandidateViewModel.CandidateId"></label>
+                    <input type="text" class="form-control" asp-for="@Model.CandidateViewModel.CandidateId" readonly />
+                </div>
+            </div>
+            <div class="row g-4">
+                <div class="mb-3 col-lg-3">
+                    <label class="form-label" asp-for="@Model.CandidateViewModel.FirstName"></label>
+                    <input type="text" class="form-control" asp-for="@Model.CandidateViewModel.FirstName" readonly />
+                </div>
+                <div class="mb-3 col-lg-3">
+                    <label class="form-label" asp-for="@Model.CandidateViewModel.MiddleName"></label>
+                    <input type="text" class="form-control" asp-for="@Model.CandidateViewModel.MiddleName" readonly />
+                </div>
+                <div class="mb-3 col-lg-3">
+                    <label class="form-label" asp-for="@Model.CandidateViewModel.LastName"></label>
+                    <input type="text" class="form-control" asp-for="@Model.CandidateViewModel.LastName" readonly />
+                </div>
+                <div class="mb-3 col-lg-3">
+                    <label class="form-label" asp-for="@Model.CandidateViewModel.NameExtension"></label>
+                    <input type="text" class="form-control" asp-for="@Model.CandidateViewModel.NameExtension" readonly />
+                </div>
+            </div>
+            <div class="row g-3">
+                <div class="mb-3 col-sm-4">
+                    <label class="form-label" asp-for="@Model.CandidateViewModel.DateOfBirth"></label>
+                    <input type="date" class="form-control" asp-for="@Model.CandidateViewModel.DateOfBirth" readonly />
+                </div>
+                <div class="mb-3 col-sm-4">
+                    <label class="form-label" asp-for="@Model.CandidateViewModel.Age"></label>
+                    <input type="number" class="form-control" asp-for="@Model.CandidateViewModel.Age" readonly />
+                </div>
+                <div class="mb-3 col-sm-4">
+                    <label class="form-label" asp-for="@Model.CandidateViewModel.Sex"></label>
+                    <input type="text" class="form-control" asp-for="@Model.CandidateViewModel.Sex" readonly />
+                </div>
+
+            </div>
+            <div class="row g-4">
+                <div class="mb-3 col-lg-3">
+                    <label class="form-label" asp-for="@Model.CandidateViewModel.CivilStatus"></label>
+                    <input type="text" class="form-control" asp-for="@Model.CandidateViewModel.CivilStatus" readonly />
+                </div>
+                <div class="mb-3 col-lg-3">
+                    <label class="form-label" asp-for="@Model.CandidateViewModel.Citizenship"></label>
+                    <input type="text" class="form-control" asp-for="@Model.CandidateViewModel.Citizenship" readonly />
+                </div>
+
+                <div class="mb-3 col-lg-3">
+                    <label class="form-label">Position</label>
+                    <input type="text" class="form-control" asp-for="@Model.CandidateViewModel.PositionId" readonly />
+                </div>
+                <div class="mb-3 col-lg-3">
+                    <label class="form-label" asp-for="@Model.CandidateViewModel.Party"></label>
+                    <input type="text" class="form-control" asp-for="@Model.CandidateViewModel.Party" readonly />
+                </div>
+            </div>
+
+            <div class="text-center mt-4">
+                <button type="submit" class="btn btn-danger">Delete</button>
+                <a asp-controller="Candidates" asp-action="Index" class="btn btn-secondary">Back</a>
+            </div>
+        </form>
+    </div>
+
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+
+    <script>
+        $(document).ready(function () {
+            $('.custom-file-input').on("change", function () {
+                var fileName = $(this).val().split("\\").pop();
+                $(this).next('.custom-file-label').html(fileName);
+            });
+        });
+    </script>
+}
+
+
+

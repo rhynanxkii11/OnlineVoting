@@ -1,7 +1,15 @@
 ﻿@{
-    ViewData["Title"] = "DASHBOARD";
-    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+    ViewData["Title"] = "Home Page";
 }
-<div class="container p-4">
-    <h3>@ViewData["Title"]</h3>
+
+<div class="container">
+    <div class="d-flex justify-content-center" id="homePage">
+        <div class="left">
+            <h1><span class="text-success ml-2">PRESIDENTIAL</span> ELECTION</h1>
+            <h3>Online Voting System</h3>
+        </div>
+        <div class="right">
+            <img id="homeImage" src="~/img/votingImage.svg" />
+        </div>
+    </div>
 </div>

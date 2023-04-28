@@ -1,0 +1,35 @@
+﻿@model ElectionEvent
+
+@{
+    ViewData["Title"] = "Update Election Event";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<div class="container bg-white w-50 p-4" style="box-shadow: 0 4px 8px rgba(0,0,0,0.3);">
+    <div class="py-3">
+        <h3>@ViewData["Title"]</h3>
+    </div>
+    <div class="bg-white p-2">
+        <form method="post" asp-action="Edit">
+            <div class="row g-1">
+                <div class="col-lg-6" style="width: 600px;">
+                    <label asp-for="StartDate" class="form-label"></label>
+                    <input type="datetime-local" asp-for="StartDate" class="form-control" />
+                    <span asp-validation-for="StartDate" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="row g-1">
+                <div class="col-lg-6" style="width: 600px;">
+                    <label asp-for="EndDate" class="form-label"></label>
+                    <input type="datetime-local" asp-for="EndDate" class="form-control" />
+                    <span asp-validation-for="EndDate" class="text-danger"></span>
+                </div>
+                <div class="col-lg-6 text-center" style="padding-top: 20px; width: 600px;">
+                    <button type="submit" class="btn btn-dark">Update</button>
+                    <a asp-controller="ElectionEvent" asp-action="Index" class="btn btn-secondary">Back</a>
+                </div>
+            </div>
+        </form>
+    </div>
+
+</div>

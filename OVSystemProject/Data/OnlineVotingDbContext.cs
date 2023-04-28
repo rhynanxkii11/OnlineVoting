@@ -21,6 +21,12 @@ namespace OVSystemProject.Data
         public DbSet<Addresses> Addresses { get; set; }
 
         public DbSet<Positions> Positions { get; set; }
+
+        public DbSet<Candidates> Candidates { get; set; }
+
+        public DbSet<ElectionEvent> ElectionEvent { get; set; }
+
+        public DbSet<VoteTransactions> VoteTransactions { get; set; }
         protected override void OnModelCreating(ModelBuilder builder)
         {
             base.OnModelCreating(builder);
@@ -58,6 +64,12 @@ namespace OVSystemProject.Data
                 .WithOne()
                 .HasForeignKey<Addresses>(v => v.VoterId)
                 .OnDelete(DeleteBehavior.Cascade);
+
+            builder.Entity<Candidates>()
+                .HasOne(c => c.Positions) 
+                .WithMany(p => p.Candidates)
+                .OnDelete(DeleteBehavior.Cascade);
+
 
             //builder.Entity<ApplicationUsers>()
             //  .HasMany<Voters>(c => c.Id)

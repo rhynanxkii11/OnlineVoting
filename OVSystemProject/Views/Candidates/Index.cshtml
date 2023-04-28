@@ -1,0 +1,55 @@
+﻿@model IEnumerable<Candidates>
+
+@{
+    ViewData["Title"] = "List of Candidates";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+<div class="container bg-white p-4" style="box-shadow: 0 4px 8px rgba(0,0,0,0.3);">
+    <div class="pt-4 pb-2">
+        <h3>@ViewData["Title"]</h3>
+    </div>
+    <hr />
+    <div class="pb-3">
+        <a asp-controller="Candidates" asp-action="Create" class="btn btn-dark mb-4">Add Candidate</a>
+    </div>
+    <div class="table-responsive">
+        <table class="table table-striped p-3" id="example">
+            <thead>
+                <tr class="bg-secondary">
+                    <th>CandidateId</th>
+                    <th>Photo</th>
+                    <th>Position Id</th>
+                    <th>Full Name</th>
+                    <th>Age</th>
+                    <th>Sex</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                @if (Model != null && Model.Any())
+                {
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>@item.CandidateId</td>
+                            <td>
+
+                                <img src="~/img/candidate/@item.Photo" style="width: 50px; height: 50px;" />
+                            </td>
+                            <td>@item.PositionId</td>
+                            <td>@item.FullName</td>
+                            <td>@item.Age</td>
+                            <td>@item.Sex</td>
+                            <td>
+                                <a asp-controller="Candidates" asp-action="Details" asp-route-id="@item.CandidateId" class="btn btn-primary">View</a>
+                                <a asp-controller="Candidates" asp-action="Edit" asp-route-id="@item.CandidateId" class="btn btn-success">Edit</a>
+                                <a asp-controller="Candidates" asp-action="Delete" asp-route-id="@item.CandidateId" class="btn btn-danger">Delete</a>
+                            </td>
+                        </tr>
+                    }
+                }
+
+            </tbody>
+        </table>
+    </div>
+</div>

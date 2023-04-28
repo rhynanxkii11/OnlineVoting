@@ -1,0 +1,19 @@
+﻿@{
+    ViewData["Title"] = "Reset Data";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+<div class="container bg-white p-4" style="box-shadow: 0 4px 8px rgba(0,0,0,0.3);">
+    <div class="pt-4 pb-2">
+        <h3>@ViewData["Title"]</h3>
+    </div>
+    <hr />
+    <form method="post" asp-action="ResetData">
+        <div class="text-center">
+             <p style="font-size: 30px;">Are you sure you want to delete the data from the table Positions, Candidates, Election Events, and Vote Transactions?</p>
+        </div>
+        <div class="modal-footer">
+             <a asp-controller="ElectionEvent" asp-action="ResetData"></a>
+             <button class="btn btn-danger" type="submit">Reset</button>
+         </div>
+    </form>
+</div>

@@ -1,0 +1,65 @@
+﻿@*@model List<ResultViewModel>
+
+<table>
+    <thead>
+        <tr>
+            <th>Candidate Id</th>
+            <th>Candidate Name</th>
+            <th>Total Votes</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var result in Model)
+        {
+            <tr>
+                <td>@result.CandidateId</td>
+                <td>@result.CandidateName</td>
+                <td>@result.TotalVotes</td>
+            </tr>
+        }
+    </tbody>
+</table>*@
+
+@model ResultsViewModel
+
+@{
+    ViewData["Title"] = "Result";
+}
+
+<div class="container bg-white p-4" style="box-shadow: 0 4px 8px rgba(0,0,0,0.3);">
+    <div class="pt-4 pb-2">
+        <h3>@ViewData["Title"]</h3>
+    </div>
+    <div class="table-response">
+        <table class="table table-striped" id="example">
+            <thead>
+                <tr class="bg-secondary">
+                    <th>Position</th>
+                    <th>Candidate Id</th>
+                    <th>FullName</th>
+                    <th>Votes</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var tally in Model.VoteTallies)
+                {
+                    <tr>
+                        <td>@tally.Position</td>
+                        <td>@tally.CandidateId</td>
+                        <td>@tally.CandidateName</td>
+                        <td>@tally.TotalVotes</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+

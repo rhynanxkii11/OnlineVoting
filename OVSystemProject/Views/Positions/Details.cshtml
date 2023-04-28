@@ -1,0 +1,40 @@
+﻿@model Positions
+@{
+    ViewData["Title"] = "List of Candidates";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+<div class="container bg-white p-4" style="box-shadow: 0 4px 8px rgba(0,0,0,0.3);">
+    <div class="pt-4 pb-3">
+        <h3>@ViewData["Title"]</h3>
+    </div>
+    <table class="table table-striped p-3" id="example">
+        <thead>
+            <tr class="bg-secondary">
+                <th>CandidateId</th>
+                <th>Photo</th>
+                <th>Position Id</th>
+                <th>Full Name</th>
+                <th>Age</th>
+                <th>Sex</th>
+            </tr>
+        </thead>
+        <tbody>
+                @foreach (var candidate in Model.Candidates)
+                {
+                    <tr>
+                        <td>@candidate.CandidateId</td>
+                        <td>
+
+                            <img src="~/img/candidate/@candidate.Photo" style="width: 50px; height: 50px;" />
+                        </td>
+                        <td>@candidate.PositionId</td>
+                        <td>@candidate.FullName</td>
+                        <td>@candidate.Age</td>
+                        <td>@candidate.Sex</td>
+                    </tr>
+                }
+           
+
+        </tbody>
+    </table>
+</div>

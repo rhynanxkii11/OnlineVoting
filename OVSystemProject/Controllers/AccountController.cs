@@ -1,23 +1,25 @@
-﻿using Microsoft.AspNetCore.Hosting;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using OVSystemProject.Data;
 using OVSystemProject.Models;
 using OVSystemProject.ViewModels;
+using System.Data;
 using System.Net;
 using System.Reflection.Metadata.Ecma335;
 
 namespace OVSystemProject.Controllers
 {
-    
+    //[Authorize(Roles = "Admin")]
     public class AccountController : Controller
     {
-        private readonly UserManager<IdentityUser> _userManager;
-        private readonly SignInManager<IdentityUser> _signInManager;
+        private readonly UserManager<ApplicationUsers> _userManager;
+        private readonly SignInManager<ApplicationUsers> _signInManager;
         private readonly OnlineVotingDbContext _context;
         private readonly IWebHostEnvironment _webHostEnvironment;
 
-        public AccountController(UserManager<IdentityUser> userManager, SignInManager<IdentityUser> signInManager, OnlineVotingDbContext context, IWebHostEnvironment webHostEnvironment) 
+        public AccountController(UserManager<ApplicationUsers> userManager, SignInManager<ApplicationUsers> signInManager, OnlineVotingDbContext context, IWebHostEnvironment webHostEnvironment) 
         {
             _signInManager = signInManager;
             _userManager = userManager;
@@ -86,8 +88,13 @@ namespace OVSystemProject.Controllers
 
                     await _userManager.AddToRoleAsync(user, "Voter");
 
-                    TempData["successMessage"] = "Your registration has been successfull!";
-                    return RedirectToAction("Login", "Voter");
+                    TempData["successMessage"] = "Registered successfully!";
+                    return RedirectToAction("Login", "Account");
+                }
+
+                foreach(var error in result.Errors)
+                {
+                    ModelState.AddModelError("", error.Description);
                 }
             }
             return View(model);

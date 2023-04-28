@@ -1,0 +1,178 @@
+﻿@model ApplicationUsers;
+
+@{
+    ViewData["Title"] = "Delete Voter";
+}
+
+
+
+<div class="row bg-white p-4" style="box-shadow: 0 4px 8px rgba(0,0,0,0.3);">
+    <div class="col-md-12">
+        <form method="post" enctype="multipart/form-data">
+            <h3>@ViewData["Title"]</h3>
+            <hr />
+            <div asp-validation-summary="ModelOnly" class="text-danger" role="alert"></div>
+            @*<div class="form-floating mb-3">
+            <input asp-for="Input.Role" hidden value="Admin" />
+            <span asp-validation-for="Input.Role" class="text-danger"></span>
+            </div>*@
+            <div class="row g-4">
+                <div class="mb-3 col-lg-3">
+                    <label class="form-label" asp-for="FirstName"></label>
+                    <input type="text" class="form-control" asp-for="FirstName" />
+                    <span asp-validation-for="FirstName" class="text-danger"></span>
+                </div>
+                <div class="mb-3 col-lg-3">
+                    <label class="form-label" asp-for="MiddleName"></label>
+                    <input type="text" class="form-control" asp-for="MiddleName" />
+                    @*<span asp-validation-for="MiddleName" class="text-danger"></span>*@
+                </div>
+                <div class="mb-3 col-lg-3">
+                    <label class="form-label" asp-for="LastName"></label>
+                    <input type="text" class="form-control" asp-for="LastName" />
+                    <span asp-validation-for="LastName" class="text-danger"></span>
+                </div>
+                <div class="mb-3 col-lg-3">
+                    <label class="form-label" asp-for="NameExtension"></label>
+                    <select class="form-control" asp-for="NameExtension">
+                        <option value=""></option>
+                        <option value="Jr">Jr</option>
+                        <option value="Sr">Sr</option>
+                        <option value="III">III</option>
+                    </select>
+                    @*<span asp-validation-for="NameExtension" class="text-danger"></span>*@
+                </div>
+            </div>
+
+            <div class="row g-4">
+                <div class="mb-3 col-lg-3">
+                    <label class="form-label" asp-for="PhoneNumber"></label>
+                    <input type="text" class="form-control" asp-for="PhoneNumber" />
+                    <span asp-validation-for="PhoneNumber" class="text-danger"></span>
+                </div>
+                <div class="mb-3 col-lg-3">
+                    <label class="form-label" asp-for="Email"></label>
+                    <input type="text" class="form-control" asp-for="Email" />
+                    <span asp-validation-for="Email" class="text-danger"></span>
+                </div>
+            </div>
+
+            <div class="row g-3">
+                <div class="mb-3 col-sm-4">
+                    <label class="form-label" asp-for="DateOfBirth"></label>
+                    <input type="date" class="form-control" asp-for="DateOfBirth" />
+                    <span asp-validation-for="DateOfBirth" class="text-danger"></span>
+                </div>
+                <div class="mb-3 col-sm-4">
+                    <label class="form-label" asp-for="Age"></label>
+                    <input type="number" class="form-control" asp-for="Age" />
+                    <span asp-validation-for="Age" class="text-danger"></span>
+                </div>
+                <div class="mb-3 col-sm-4">
+                    <label class="form-label" asp-for="Sex"></label>
+                    <select class="form-control" asp-for="Sex">
+                        <option value=""></option>
+                        <option value="F">Female</option>
+                        <option value="M">Male</option>
+                    </select>
+                    <span asp-validation-for="Sex" class="text-danger"></span>
+                </div>
+                @*<div class="mb-3 col-lg-3">
+                <label class="form-label" asp-for="Photo"></label>
+                <input type="file" class="form-control" asp-for="Photo" />
+                <span asp-validation-for="Photo" class="text-danger"></span>
+                </div>*@
+            </div>
+            @*<div class="my-2">
+            <label class="form-label fw-bold">PLACE OF BIRTH</label>
+            </div>
+            <div class="row g-2">
+            <div class="mb-3 col-lg-6">
+            <label class="form-label" asp-for="Voter.PBMunicipality"></label>
+            <input type="text" class="form-control" asp-for="Voter.PBMunicipality" />
+            <span asp-validation-for="Voter.PBMunicipality" class="text-danger"></span>
+            </div>
+            <div class="mb-3 col-lg-6">
+            <label class="form-label" asp-for="Voter.PBProvince"></label>
+            <input type="text" class="form-control" asp-for="Voter.PBProvince" />
+            <span asp-validation-for="Voter.PBProvince" class="text-danger"></span>
+            </div>
+            </div>
+            <div class="row g-3">
+            <div class="mb-3 col-lg-4">
+            <label class="form-label" asp-for="Voter.CivilStatus"></label>
+            <select class="form-control" asp-for="Voter.CivilStatus">
+            <option value=""></option>
+            <option value="Single">Single</option>
+            <option value="Married">Married</option>
+            <option value="Widowed">Windowed</option>
+            <option value="Separated">Separated</option>
+            <option value="Others">Others</option>
+            </select>
+            <span asp-validation-for="Voter.CivilStatus" class="text-danger"></span>
+            </div>
+
+            <div class="mb-3 col-lg-4">
+            <label class="form-label" asp-for="Voter.Citizenship"></label>
+            <select class="form-control" asp-for="Voter.Citizenship">
+            <option value=""></option>
+            <option value="Filipino">Filipino</option>
+            <option value="Dual Citizenship">Dual Citizenship</option>
+            <option value="Others">Others</option>
+            </select>
+            <span asp-validation-for="Voter.Citizenship" class=" text-danger"></span>
+            </div>
+
+            <div class="mb-3 col-lg-3">
+            <label class="form-label" asp-for="Voter.Occupation"></label>
+            <input type="text" class="form-control" asp-for="Voter.Occupation" />
+            <span asp-validation-for="Voter.Occupation" class="text-danger"></span>
+            </div>
+            </div>
+            <div class="my-2">
+            <label class="form-label fw-bold">ADDRESS</label>
+            </div>
+            <div class="row g-4">
+            <div class="mb-3 col-lg-3">
+            <label class="form-label" asp-for="Address.AddHouseNoStreet"></label>
+            <input type="text" class="form-control" asp-for="Address.AddHouseNoStreet" />
+            <span asp-validation-for="Address.AddHouseNoStreet" class="text-danger"></span>
+            </div>
+            <div class="mb-3 col-lg-3">
+            <label class="form-label" asp-for="Address.AddBarangay"></label>
+            <input type="text" class="form-control" asp-for="Address.AddBarangay" />
+            <span asp-validation-for="Address.AddBarangay" class="text-danger"></span>
+            </div>
+            <div class="mb-3 col-lg-3">
+            <label class="form-label" asp-for="Address.AddMunicipality"></label>
+            <input type="text" class="form-control" asp-for="Address.AddMunicipality" />
+            <span asp-validation-for="Address.AddMunicipality" class="text-danger"></span>
+            </div>
+            <div class="mb-3 col-lg-3">
+            <label class="form-label" asp-for="Address.AddProvince"></label>
+            <input type="text" class="form-control" asp-for="Address.AddProvince" />
+            <span asp-validation-for="Address.AddProvince" class="text-danger"></span>
+            </div>
+            </div>*@
+            <div class="text-center">
+                <button class="btn btn-danger" type="submit">Delete</button>
+                <a asp-controller="Voters" asp-action="Index" class="btn btn-secondary">Back</a>
+            </div>
+        </form>
+    </div>
+    
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+
+    <script>
+        $(document).ready(function () {
+            $('.custom-file-input').on("change", function () {
+                var fileName = $(this).val().split("\\").pop();
+                $(this).next('.custom-file-label').html(fileName);
+            });
+        });
+    </script>
+}
+

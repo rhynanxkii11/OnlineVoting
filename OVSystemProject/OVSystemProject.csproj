@@ -7,8 +7,13 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Folder Include="wwwroot\img\candidate\" />
     <Folder Include="wwwroot\img\user\" />
   </ItemGroup>
+
+	<PropertyGroup>
+		<UseRazorSourceGenerator>false</UseRazorSourceGenerator>
+	</PropertyGroup>
 
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="7.0.5" />

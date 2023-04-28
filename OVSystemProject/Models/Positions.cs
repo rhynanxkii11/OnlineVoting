@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
 
 namespace OVSystemProject.Models
 {
@@ -6,6 +7,11 @@ namespace OVSystemProject.Models
     {
         [Key]
         public int PositionId { get; set; }
+        [Required]
+        [DisplayName("Position Name")]
+        [RegularExpression(@"^[a-zA-Z ]+$", ErrorMessage = "Use letters only")]
         public string PositionName { get; set; }
+
+        public ICollection<Candidates>? Candidates { get; set; }
     }
 }

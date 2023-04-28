@@ -20,3 +20,76 @@ html {
 body {
   margin-bottom: 60px;
 }
+.left h1{
+    font-size: 60px;
+    font-weight: 600;
+}
+.left h3 {
+    font-size: 40px;
+    font-weight: 600;
+    
+}
+#homePage{
+    display: flex;
+    height: 90vh;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    gap: 100px;
+}
+#homeImage{
+    height: 550px;
+    width: 550px;
+}
+.login {
+    font-weight: 600;
+    position: relative;
+}
+
+    .login::before {
+        position: absolute;
+        content: '';
+        width: 25px;
+        height: 25px;
+        background-color: #93c54b;
+        left: 50px;
+        top: 12px;
+        border-radius: 50%;
+    }
+
+#responsive-login {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    height: 100vh;
+    align-items: center;
+}
+@media only screen and (max-width: 786px){
+    #homePage{
+        flex-direction: column;
+        gap: 50px;
+    }
+    .left h1 {
+        font-size: 40px;
+        font-weight: 600;
+        padding-top: 200px;
+        display: flex;
+        width: 100%;
+        justify-content: center;
+    }
+
+    .left h3 {
+        font-size: 20px;
+        font-weight: 600;
+        display: flex;
+        width: 100%;
+        justify-content: center;
+    }
+    #homeImage {
+        height: 400px;
+        width: 400px;
+    }
+    #responsive-login{
+        flex-direction: column;
+    }
+}

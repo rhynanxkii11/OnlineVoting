@@ -18,5 +18,6 @@ namespace OVSystemProject.Models
         public string Occupation { get; set; }
 
         public virtual ApplicationUsers applicationUser { get; set; }
+
     }
 }

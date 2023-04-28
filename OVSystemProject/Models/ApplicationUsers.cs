@@ -28,5 +28,27 @@ namespace OVSystemProject.Models
         public string Photo { get; set; }
         [DatabaseGenerated(DatabaseGeneratedOption.Computed)]
         public DateTime RegisteredDate { get; set; }
+
+
+        [NotMapped]
+        public string FullName
+        {
+            get
+            {
+                if (MiddleName != null)
+                {
+                    return $"{FirstName} {MiddleName} {LastName}";
+                }
+                if (NameExtension != null)
+                {
+                    return $"{FirstName} {LastName} {NameExtension}";
+                }
+                if (MiddleName != null && NameExtension != null)
+                {
+                    return $"{FirstName} {MiddleName} {LastName} {NameExtension}";
+                }
+                return $"{FirstName} {LastName}";
+            }
+        }
     }
 }

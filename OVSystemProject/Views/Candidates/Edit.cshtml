@@ -1,0 +1,144 @@
+﻿@model CandidateViewModel
+
+@{
+    ViewData["Title"] = "Update Candidate";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<div class="row bg-white p-4" style="box-shadow: 0 4px 8px rgba(0,0,0,0.3);">
+    <div class="col-md-12">
+        <form method="post" enctype="multipart/form-data">
+            <h3>@ViewData["Title"]</h3>
+            <hr />
+            <div asp-validation-summary="ModelOnly" class="text-danger" role="alert"></div>
+            <div class="row g-4">
+                <div class="mb-3 col-lg-3">
+                    <label class="form-label" asp-for="FirstName"></label>
+                    <input type="text" class="form-control" asp-for="FirstName" />
+                    <span asp-validation-for="FirstName" class="text-danger"></span>
+                </div>
+                <div class="mb-3 col-lg-3">
+                    <label class="form-label" asp-for="MiddleName"></label>
+                    <input type="text" class="form-control" asp-for="MiddleName" />
+                </div>
+                <div class="mb-3 col-lg-3">
+                    <label class="form-label" asp-for="LastName"></label>
+                    <input type="text" class="form-control" asp-for="LastName" />
+                    <span asp-validation-for="LastName" class="text-danger"></span>
+                </div>
+                <div class="mb-3 col-lg-3">
+                    <label class="form-label" asp-for="NameExtension"></label>
+                    <select class="form-control" asp-for="NameExtension">
+                        <option value=""></option>
+                        <option value="Jr">Jr</option>
+                        <option value="Sr">Sr</option>
+                        <option value="III">III</option>
+                    </select>
+                </div>
+            </div>
+            <div class="row g-4">
+                <div class="mb-3 col-sm-3">
+                    <label class="form-label" asp-for="DateOfBirth"></label>
+                    <input type="date" class="form-control" asp-for="DateOfBirth"/>
+                    <span asp-validation-for="DateOfBirth" class="text-danger"></span>
+                </div>
+                <div class="mb-3 col-sm-3">
+                    <label class="form-label" asp-for="Age"></label>
+                    <input type="number" class="form-control" asp-for="Age" />
+                    <span asp-validation-for="Age" class="text-danger"></span>
+                </div>
+                <div class="mb-3 col-sm-3">
+                    <label class="form-label" asp-for="Sex"></label>
+                    <select class="form-control" asp-for="Sex">
+                        <option value=""></option>
+                        <option value="F">Female</option>
+                        <option value="M">Male</option>
+                    </select>
+                    <span asp-validation-for="Sex" class="text-danger"></span>
+                </div>
+                <div class="mb-3 col-sm-3">
+                    <label class="form-label" asp-for="Photo"></label>
+                    <div class="">
+                        <input type="file" class="form-control" asp-for="Photo" id="fileInput" style="display: none; width: 270px;" />
+                        <input type="button" onclick="toggleFileInput()" class="btn btn-secondary" value="Upload New File" style="width: 270px;" />
+                    </div>
+                    
+                    <span asp-validation-for="Photo" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="row g-4">
+                <div class="mb-3 col-lg-3">
+                    <label class="form-label" asp-for="CivilStatus"></label>
+                    <select class="form-control" asp-for="CivilStatus">
+                        <option value=""></option>
+                        <option value="Single">Single</option>
+                        <option value="Married">Married</option>
+                        <option value="Widowed">Windowed</option>
+                        <option value="Separated">Separated</option>
+                        <option value="Others">Others</option>
+                    </select>
+                    <span asp-validation-for="CivilStatus" class="text-danger"></span>
+                </div>
+
+                <div class="mb-3 col-lg-3">
+                    <label class="form-label" asp-for="Citizenship"></label>
+                    <select class="form-control" asp-for="Citizenship">
+                        <option value=""></option>
+                        <option value="Filipino">Filipino</option>
+                        <option value="Dual Citizenship">Dual Citizenship</option>
+                        <option value="Others">Others</option>
+                    </select>
+                    <span asp-validation-for="Citizenship" class=" text-danger"></span>
+                </div>
+                <div class="mb-3 col-lg-3">
+                    <label class="form-label">Position</label>
+                    <select class="form-control" asp-for="PositionId">
+                        <option value=""></option>
+                        
+                            @foreach (var item in ViewBag.CandidatePositions)
+                            {
+                                <option value="@item.PositionId">@item.PositionName</option>
+                            }
+                        
+                        
+                    </select>
+                    <span asp-validation-for="PositionId" class=" text-danger"></span>
+                </div>
+                <div class="mb-3 col-lg-3">
+                    <label class="form-label" asp-for="Party"></label>
+                    <input type="text" class="form-control" asp-for="Party" />
+                    <span asp-validation-for="Party" class="text-danger"></span>
+                </div>
+            </div>
+
+            <div class="text-center mt-4">
+                <button type="submit" class="btn btn-dark">Update</button>
+                <a asp-controller="Candidates" asp-action="Index" class="btn btn-secondary">Back</a>
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+
+    <script>
+        $(document).ready(function () {
+            $('.custom-file-input').on("change", function () {
+                var fileName = $(this).val().split("\\").pop();
+                $(this).next('.custom-file-label').html(fileName);
+            });
+        });
+
+        function toggleFileInput(){
+            const fileInput = document.getElementById("fileInput");
+            if(fileInput.style.display === "none"){
+                fileInput.style.display = "block";
+            }
+            else{
+                fileInput.style.display = "none";
+            }
+        }
+    </script>
+}
+

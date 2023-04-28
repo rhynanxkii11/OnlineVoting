@@ -5,25 +5,28 @@
 }
 
 <div class="container">
-    <div class="d-flex justify-content-center vh-100 align-content-center gap-4" style="padding: 15%;">
+    <div id="reponsive-login" class="d-flex justify-content-center align-content-center gap-4" style="padding: 10%; padding-top: 5%;">
         <div class="loginImage">
             <img src="~/img/votingImage.svg" style="width: 500px;"/>
         </div>
         <div class="loginForm pt-5">
-            <form method="post" class="bg-light p-5" style="width: 330px; border-radius: 20px; box-shadow: 0px 4px 8px rgba(0,0,0,0.3);">
+            <form method="post" class="bg-light p-5" style="width: 400px; border-radius: 20px; box-shadow: 0px 4px 8px rgba(0,0,0,0.3);">
+                <div class="text-center py-3 fw-bold ">
+                    <h1 class="login">Login</h1>
+                </div>
                 <div class="row">
                     <div asp-validation-summary="All" class="text-danger">
 
                     </div>
                     <div class="form-group my-1">
                         <label asp-for="Email" class="label-form"></label>
-                        <input asp-for="Email" type="text" class="form-control" style="width: 250px;" />
+                        <input asp-for="Email" type="text" class="form-control" style="width: 300px;" />
                         <span asp-validation-for="Email" class="text-danger"></span>
                     </div>
                     
                     <div class="form-group my-1">
                         <label asp-for="Password" class="label-form"></label>
-                        <input asp-for="Password" class="form-control" style="width: 250px;" />
+                        <input asp-for="Password" class="form-control" style="width: 300px;" />
                         <span asp-validation-for="Password" class="text-danger"></span>
                     </div>
                     <div class="form-group my-1">
@@ -37,6 +40,9 @@
                 </div>
                 <div class="my-3 text-center">
                     <button type="submit" class="btn btn-dark">Log in</button>
+                    <div class="pt-3">
+                        <a asp-controller="Account" asp-action="Register" >Register as new voter here</a>
+                    </div>
                 </div>
             </form>
         </div>

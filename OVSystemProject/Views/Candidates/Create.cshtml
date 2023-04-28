@@ -1,0 +1,127 @@
+﻿@model CandidatesViewModel
+
+@{
+    ViewData["Title"] = "Add Candidate";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<div class="row bg-white p-4" style="box-shadow: 0 4px 8px rgba(0,0,0,0.3);">
+    <div class="col-md-12">
+        <form method="post" enctype="multipart/form-data">
+            <h3>@ViewData["Title"]</h3>
+            <hr />
+            <div asp-validation-summary="ModelOnly" class="text-danger" role="alert"></div>
+            <div class="row g-4">
+                <div class="mb-3 col-lg-3">
+                    <label class="form-label" asp-for="@Model.CandidateViewModel.FirstName"></label>
+                    <input type="text" class="form-control" asp-for="@Model.CandidateViewModel.FirstName" />
+                    <span asp-validation-for="@Model.CandidateViewModel.FirstName" class="text-danger"></span>
+                </div>
+                <div class="mb-3 col-lg-3">
+                    <label class="form-label" asp-for="@Model.CandidateViewModel.MiddleName"></label>
+                    <input type="text" class="form-control" asp-for="@Model.CandidateViewModel.MiddleName" />
+                </div>
+                <div class="mb-3 col-lg-3">
+                    <label class="form-label" asp-for="@Model.CandidateViewModel.LastName"></label>
+                    <input type="text" class="form-control" asp-for="@Model.CandidateViewModel.LastName" />
+                    <span asp-validation-for="@Model.CandidateViewModel.LastName" class="text-danger"></span>
+                </div>
+                <div class="mb-3 col-lg-3">
+                    <label class="form-label" asp-for="@Model.CandidateViewModel.NameExtension"></label>
+                    <select class="form-control" asp-for="@Model.CandidateViewModel.NameExtension">
+                        <option value=""></option>
+                        <option value="Jr">Jr</option>
+                        <option value="Sr">Sr</option>
+                        <option value="III">III</option>
+                    </select>
+                </div>
+            </div>
+            <div class="row g-4">
+                <div class="mb-3 col-sm-3">
+                    <label class="form-label" asp-for="@Model.CandidateViewModel.DateOfBirth"></label>
+                    <input type="date" class="form-control" asp-for="@Model.CandidateViewModel.DateOfBirth" value="" />
+                    <span asp-validation-for="@Model.CandidateViewModel.DateOfBirth" class="text-danger"></span>
+                </div>
+                <div class="mb-3 col-sm-3">
+                    <label class="form-label" asp-for="@Model.CandidateViewModel.Age"></label>
+                    <input type="number" class="form-control" asp-for="@Model.CandidateViewModel.Age" value="" />
+                    <span asp-validation-for="@Model.CandidateViewModel.Age" class="text-danger"></span>
+                </div>
+                <div class="mb-3 col-sm-3">
+                    <label class="form-label" asp-for="@Model.CandidateViewModel.Sex"></label>
+                    <select class="form-control" asp-for="@Model.CandidateViewModel.Sex">
+                        <option value=""></option>
+                        <option value="F">Female</option>
+                        <option value="M">Male</option>
+                    </select>
+                    <span asp-validation-for="@Model.CandidateViewModel.Sex" class="text-danger"></span>
+                </div>
+                <div class="mb-3 col-lg-3">
+                    <label class="form-label" asp-for="@Model.CandidateViewModel.Photo"></label>
+                    <input type="file" class="form-control" asp-for="@Model.CandidateViewModel.Photo" />
+                    <span asp-validation-for="@Model.CandidateViewModel.Photo" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="row g-4">
+                <div class="mb-3 col-lg-3">
+                    <label class="form-label" asp-for="@Model.CandidateViewModel.CivilStatus"></label>
+                    <select class="form-control" asp-for="@Model.CandidateViewModel.CivilStatus">
+                        <option value=""></option>
+                        <option value="Single">Single</option>
+                        <option value="Married">Married</option>
+                        <option value="Widowed">Windowed</option>
+                        <option value="Separated">Separated</option>
+                        <option value="Others">Others</option>
+                    </select>
+                    <span asp-validation-for="@Model.CandidateViewModel.CivilStatus" class="text-danger"></span>
+                </div>
+
+                <div class="mb-3 col-lg-3">
+                    <label class="form-label" asp-for="@Model.CandidateViewModel.Citizenship"></label>
+                    <select class="form-control" asp-for="@Model.CandidateViewModel.Citizenship">
+                        <option value=""></option>
+                        <option value="Filipino">Filipino</option>
+                        <option value="Dual Citizenship">Dual Citizenship</option>
+                        <option value="Others">Others</option>
+                    </select>
+                    <span asp-validation-for="@Model.CandidateViewModel.Citizenship" class=" text-danger"></span>
+                </div>
+                <div class="mb-3 col-lg-3">
+                    <label class="form-label">Position</label>
+                    <select class="form-control" asp-for="@Model.CandidateViewModel.PositionId">
+                        <option value=""></option>
+                        @foreach(var item in Model.Positions)
+                        {
+                            <option value="@item.PositionId">@item.PositionName</option>
+                        }
+                    </select>
+                    <span asp-validation-for="@Model.CandidateViewModel.PositionId" class=" text-danger"></span>
+                </div>
+                <div class="mb-3 col-lg-3">
+                    <label class="form-label" asp-for="@Model.CandidateViewModel.Party"></label>
+                    <input type="text" class="form-control" asp-for="@Model.CandidateViewModel.Party" />
+                    <span asp-validation-for="@Model.CandidateViewModel.Party" class="text-danger"></span>
+                </div>
+            </div>
+            
+            <div class="text-center mt-4">
+                <button type="submit" class="btn btn-dark">Register</button>
+                <a asp-controller="Candidates" asp-action="Index" class="btn btn-secondary">Back</a>
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+
+    <script>
+        $(document).ready(function () {
+            $('.custom-file-input').on("change", function () {
+                var fileName = $(this).val().split("\\").pop();
+                $(this).next('.custom-file-label').html(fileName);
+            });
+        });
+    </script>
+}
+

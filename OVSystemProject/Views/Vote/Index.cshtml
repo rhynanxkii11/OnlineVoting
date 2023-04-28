@@ -1,0 +1,66 @@
+﻿@*@model TransactionsViewModel
+@{
+    ViewData["Title"] = "Poll Form";
+}
+
+<div class="container bg-white p-4" style="box-shadow: 0 4px 8px rgba(0,0,0,0.3); width: 400px; box-sizing: border-box;">
+    <form method="post">
+        <div class="text-center">
+            <h1>VOTING FORM</h1>
+        </div>
+        <div class="row col-sm-12">
+            @if (Model != null)
+            {
+                for (var i = 0; i < ((List<Positions>)Model.Positions).Count; i++)
+                {
+                    <label class="form-label">@Model.Positions[i]</label>
+                    <select name="selectedCandidates[@Model.Positions[i].PositionId]" class="form-control">
+                        <option value="0">No Vote</option>
+                        @foreach (var candidate in Model.Positions[i].Candidates)
+                        {
+                            <option value="@candidate.CandidateId">@candidate.FullName</option>
+
+                        }
+                    </select>
+                }
+
+            }
+
+        </div>
+        <div class="py-4 text-center">
+            <button class="btn btn-success">Submit</button>
+        </div>
+    </form>
+</div>*@
+
+@model TransactionsViewModel
+@{
+    ViewData["Title"] = "Poll Form";
+}
+
+<div class="container bg-white p-4 align-items-center" style="box-shadow: 0 4px 8px rgba(0,0,0,0.3); width: 400px; box-sizing: border-box;">
+    <form method="post">
+        <div class="text-center">
+            <h1>VOTING FORM</h1>
+        </div>
+        <div class="row col-sm-12">
+            @if (Model != null)
+            {
+                @for (var i = 0; i < Model.Positions.Count; i++)
+                {
+                    <label class="form-label">@Model.Positions[i].PositionName</label>
+                    <select name="selectedCandidates[@i]" class="form-control">
+                        <option value="0">No Vote</option>
+                        @foreach (var candidate in Model.Positions[i].Candidates)
+                        {
+                            <option value="@candidate.CandidateId">@candidate.FullName</option>
+                        }
+                    </select>
+                }
+            }
+        </div>
+        <div class="py-4 text-center">
+            <button class="btn btn-success">Submit</button>
+        </div>
+    </form>
+</div>

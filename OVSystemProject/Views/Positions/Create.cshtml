@@ -1,0 +1,28 @@
+﻿@model Positions
+
+@{
+    ViewData["Title"] = "Add New Position";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<div class="container p-5 w-50">
+    <div class="py-3">
+        <h3>@ViewData["Title"]</h3>
+    </div>
+    <div class="bg-white p-4" style="Box-shadow: 0px 4px 8px rgba(0,0,0,0.3); border-radius: 10px;">
+        <form method="post">
+            <div class="row g-2">
+                <div class="col-lg-6" style="width: 480px;">
+                    <label asp-for="PositionName" class="form-label"></label>
+                    <input type="text" asp-for="PositionName" class="form-control"  />
+                    <span asp-validation-for="PositionName" class="text-danger"></span>
+                </div>
+                <div class="col-lg-6 text-center" style="padding-top: 20px; width: 480px;">
+                    <button type="submit" class="btn btn-dark">Save</button>
+                    <a asp-controller="Positions" asp-action="Index" class="btn btn-secondary">Back</a>
+                </div>
+            </div>
+        </form>
+    </div>
+    
+</div>
